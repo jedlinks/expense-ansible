@@ -10,7 +10,7 @@
 
     - name: Install Nodejs
       ansible.builtin.dnf: install nodejs
-      state: installed
+        state: installed
 
     - name: Configure Backend
       ansible.builtin.copy:
