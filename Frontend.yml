@@ -7,29 +7,29 @@
         name: nginx
         state: installed
 
-- name: Copying Application Contents
-  ansible.builtin.copy:
-    src: expense.conf
-    dest: /etc/nginx/default.d/expense.conf
+    - name: Copying Application Contents
+      ansible.builtin.copy:
+      src: expense.conf
+      dest: /etc/nginx/default.d/expense.conf
 
-- name: Removing Old/Default Content
-  ansible.builtin.file:
-    path: /usr/share/nginx/html/
-    state: absent
+    - name: Removing Old/Default Content
+      ansible.builtin.file:
+      path: /usr/share/nginx/html/
+      state: absent
 
-- name: Creating App Directory
-  ansible.builtin.file:
-    path: /usr/share/nginx/html/
-    state: directory
+    - name: Creating App Directory
+      ansible.builtin.file:
+      path: /usr/share/nginx/html/
+      state: directory
 
-- name: Downloading Application Contents
-  ansible.builtin.unarchive:
-    dest: /usr/share/nginx/html/
-    src: https://expense-artifacts.s3.amazonaws.com/frontend.zip
-    remote_src: yes
+    - name: Downloading Application Contents
+      ansible.builtin.unarchive:
+        dest: /usr/share/nginx/html/
+        src: https://expense-artifacts.s3.amazonaws.com/frontend.zip
+        remote_src: yes
 
-- name: Enabling and Starting Nginx
-  ansible.builtin.systemd_service:
-    name: nginx
-    enabled: true
-    state: restarted
+    - name: Enabling and Starting Nginx
+      ansible.builtin.systemd_service:
+        name: nginx
+        enabled: true
+        state: restarted
