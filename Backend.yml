@@ -1,0 +1,67 @@
+- name: Backend Setup
+  hosts: backend-dev.jedlinks.com
+  become: yes
+  tasks:
+    - name: Disabling Nodejs
+      ansible.builtin.shell: dnf module disable nodejs -y
+
+    - name: Enabling Nodejs:18
+      ansible.builtin.shell: dnf module enable nodejs:18 -y
+
+    - name: Insatall Nodejs
+      ansible.builtin.dnf:
+        name: install nodejs
+        state: installed
+
+    - name: Configure Backend
+      ansible.builtin.copy:
+        src: backend.service
+        dest: /etc/systemd/system/backend.service
+
+    - name: Adding User
+      ansible.builtin.user:
+        name: expense
+
+    - name: Removing existing user
+      ansible.builtin.file:
+        path: /app
+        state: absent
+
+    - name: Creating Application Directory
+      ansible.builtin.file:
+        path: /app
+        state: directory
+
+    - name: Downloading Application Files
+      ansible.builtin.unarchive:
+        dest: /app
+        src: https://expense-artifacts.s3.amazonaws.com/backend.zip &>>log_file
+
+    - name: Downloading/Install Dependencies
+      community.general.npm:
+        path: /app
+
+    - name: Reloading and Restarting Backend
+      ansible.builtin.systemd_service:
+        name: backend
+        state: restarted
+        enabled: yes
+
+    - name: Install Python Libraries
+      ansible.builtin.dnf:
+        name: python3-pyMySQL
+        state: installed
+
+    - name: Install MYSQL
+      ansible.builtin.dnf:
+        name: mysql
+        state: installed
+
+    - name: Loading Schema
+      community.mysql.mysql_db:
+        state: import
+        name: all
+        target: /app/schema/backend.sql
+        login_user: root
+        login_password: ExpenseApp@1
+        login_host: mysql-dev.jedlinks.com
