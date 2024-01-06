@@ -4,6 +4,7 @@
   task:
     - name: Install Nginx
       ansible.builtin.dnf:
+        name: nginx
         state: installed
 
 - name: Copying Application Contents
