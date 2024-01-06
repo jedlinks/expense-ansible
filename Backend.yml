@@ -35,7 +35,7 @@
     - name: Downloading Application Files
       ansible.builtin.unarchive:
         dest: /app
-        src: https://expense-artifacts.s3.amazonaws.com/backend.zip &>>log_file
+        src: https://expense-artifacts.s3.amazonaws.com/backend.zip
 
     - name: Downloading/Install Dependencies
       community.general.npm:
