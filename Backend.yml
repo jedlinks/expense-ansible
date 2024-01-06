@@ -9,9 +9,8 @@
       ansible.builtin.shell: dnf module enable nodejs:18 -y
 
     - name: Install Nodejs
-      ansible.builtin.dnf:
-        name: install nodejs
-        state: installed
+      ansible.builtin.dnf: install nodejs
+      state: installed
 
     - name: Configure Backend
       ansible.builtin.copy:
