@@ -1,4 +1,4 @@
-- name: Frontend Setup
+  name: Frontend Setup
   hosts: all
   become: true
   task:
