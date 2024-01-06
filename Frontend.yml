@@ -9,18 +9,18 @@
 
     - name: Copying Application Contents
       ansible.builtin.copy:
-      src: expense.conf
-      dest: /etc/nginx/default.d/expense.conf
+        src: expense.conf
+        dest: /etc/nginx/default.d/expense.conf
 
     - name: Removing Old/Default Content
       ansible.builtin.file:
-      path: /usr/share/nginx/html/
-      state: absent
+        path: /usr/share/nginx/html/
+        state: absent
 
     - name: Creating App Directory
       ansible.builtin.file:
-      path: /usr/share/nginx/html/
-      state: directory
+        path: /usr/share/nginx/html/
+        state: directory
 
     - name: Downloading Application Contents
       ansible.builtin.unarchive:
