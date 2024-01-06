@@ -5,12 +5,10 @@
     - name: Disable Default Nodejs
       ansible.builtin.shell: dnf module disable nodejs -y
       returned: always
-      sample: true
 
     - name: Enabling Nodejs:18
       ansible.builtin.shell: dnf module enable nodejs:18 -y
       returned: always
-      sample: true
 
     - name: Install Nodejs
       ansible.builtin.dnf:
