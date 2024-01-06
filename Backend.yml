@@ -48,14 +48,14 @@
         state: restarted
         enabled: yes
 
-    - name: Install Python Libraries
-      ansible.builtin.dnf:
-        name: python3-pyMySQL
-        state: installed
-
     - name: Install MYSQL
       ansible.builtin.dnf:
         name: mysql
+        state: installed
+
+    - name: Install Python Libraries
+      ansible.builtin.dnf:
+        name: python3-pyMySQL
         state: installed
 
     - name: Loading Schema
