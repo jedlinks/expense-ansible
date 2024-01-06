@@ -36,6 +36,7 @@
       ansible.builtin.unarchive:
         dest: /app
         src: https://expense-artifacts.s3.amazonaws.com/backend.zip
+        remote_src: true
 
     - name: Downloading/Install Dependencies
       community.general.npm:
