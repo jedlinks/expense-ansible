@@ -4,11 +4,9 @@
   tasks:
     - name: Disable Default Nodejs
       ansible.builtin.shell: dnf module disable nodejs -y
-      returned: always
 
     - name: Enabling Nodejs:18
       ansible.builtin.shell: dnf module enable nodejs:18 -y
-      returned: always
 
     - name: Install Nodejs
       ansible.builtin.dnf:
