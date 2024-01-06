@@ -2,7 +2,7 @@
   hosts: backend-dev.jedlinks.com
   become: yes
   tasks:
-    - name: Disabling Nodejs
+    - name: Disable Default Nodejs
       ansible.builtin.shell: dnf module disable nodejs -y
 
     - name: Enabling Nodejs:18
