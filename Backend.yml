@@ -55,7 +55,7 @@
 
     - name: Install Python Libraries
       ansible.builtin.dnf:
-        name: MySQL-python2.7
+        name: python2.7-MYSQL
         state: installed
 
     - name: Loading Schema
