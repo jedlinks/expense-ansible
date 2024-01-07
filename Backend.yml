@@ -1,5 +1,5 @@
 - name: Backend Setup
-  hosts: backend-dev.jedlinks.com
+  hosts: all
   become: yes
   tasks:
     - name: Disable Default Nodejs

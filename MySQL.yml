@@ -1,5 +1,5 @@
 - name: MYSQL Setup
-  hosts: mysql-dev.jedlinks.com
+  hosts: all
   become: true
   tasks:
     - name: Enabling and starting MYSQL
