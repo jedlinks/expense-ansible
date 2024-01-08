@@ -33,7 +33,7 @@
     state: restarted
     enabled: yes
 
-- name: Install MYSQL and Python Libraries
+- name: Install MYSQL & Python Libraries
   ansible.builtin.dnf:
     name: "{{item}}"
     state: installed
