@@ -1,5 +1,5 @@
 - name: Expense Project Setup
-  hosts: frontend-dev.jedlinks.com, backend-dev.jedlinks.com, mysql-dev.jedlinks.com
+  hosts: all
   become: yes
   roles:
     - "{{service_name}}"
