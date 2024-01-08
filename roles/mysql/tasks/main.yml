@@ -1,0 +1,20 @@
+- name: Enabling and starting MYSQL
+  ansible.builtin.shell: dnf module disable mysql -y
+
+- name: Copying Repo Files
+  ansible.builtin.copy:
+    src: mysql.repo
+    dest: /etc/yum.repos.d/mysql.repo
+
+- name: Installing Mysql Community Server
+  ansible.builtin.dnf:
+    name: mysql-community-server
+    state: installed
+
+- name: Enabling and starting MYSQL
+  ansible.builtin.systemd_service:
+    name: mysqld
+    state: restarted
+
+- name: Password Setup
+  ansible.builtin.shell: mysql_secure_installation --set-root-pass ExpenseApp@1
