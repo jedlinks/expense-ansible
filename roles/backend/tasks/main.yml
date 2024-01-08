@@ -18,21 +18,10 @@
   ansible.builtin.user:
     name: expense
 
-- name: Removing existing user
-  ansible.builtin.file:
-    path: /app
-    state: absent
-
-- name: Creating Application Directory
-  ansible.builtin.file:
-    path: /app
-    state: directory
-
-- name: Downloading Application Files
-  ansible.builtin.unarchive:
-    dest: /app
-    src: https://expense-artifacts.s3.amazonaws.com/backend.zip
-    remote_src: true
+- name: App Prerequisites
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: app_requi.yml
 
 - name: Downloading/Install Dependencies
   community.general.npm:
