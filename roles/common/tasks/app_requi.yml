@@ -1,15 +1,15 @@
 - name: Removing existing user
   ansible.builtin.file:
-    path: "{app_location}"
+    path: "{{app_location}}"
     state: absent
 
 - name: Creating Application Directory
   ansible.builtin.file:
-    path: "{app_location}"
+    path: "{{app_location}}"
     state: directory
 
 - name: Downloading Application Files
   ansible.builtin.unarchive:
-    dest: "{app_location}"
+    dest: "{{app_location}}"
     src: https://expense-artifacts.s3.amazonaws.com/{{component}}.zip
     remote_src: true
