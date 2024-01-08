@@ -37,9 +37,9 @@
   ansible.builtin.dnf:
     name: "{{item}}"
     state: installed
-    loop:
-      - mysql
-      - python3-PyMySQL
+  loop:
+    - mysql
+    - python3-PyMySQL
 
 - name: Loading Schema
   community.mysql.mysql_db:
