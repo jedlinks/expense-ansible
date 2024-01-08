@@ -1,5 +1,5 @@
 - name: Backend Setup
-  hosts: all
+  hosts: backend-dev.jedlinks.com
   become: yes
   roles:
     - backend

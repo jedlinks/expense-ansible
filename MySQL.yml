@@ -1,5 +1,5 @@
 - name: MYSQL Setup
-  hosts: all
+  hosts: mysql-dev.jedlinks.com
   become: true
   roles:
     - mysql
